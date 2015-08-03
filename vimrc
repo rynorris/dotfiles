@@ -1,10 +1,44 @@
 set nocompatible
 
 "------------------------------------------------------------------------------
-" Pathogen, wants to be called before anyone else.
+" Vim-Plug for plugin management.
 "------------------------------------------------------------------------------
-call pathogen#infect()
-call pathogen#helptags()
+call plug#begin('~/.vim/plugged')
+
+" Navigation
+Plug 'kien/ctrlp.vim'
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
+Plug 'rking/ag.vim'
+Plug 'vim-scripts/gtags.vim'
+Plug 'DiscoViking/CtrlPGtags'
+
+" Editing
+Plug 'DiscoViking/AutoComment'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh', 'for': ['c', 'python'] }
+autocmd! User YouCompleteMe call youcompleteme#Enable()
+
+" Informational
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+
+" Source control
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" Visual
+Plug 'bling/vim-airline'
+Plug 'chriskempson/vim-tomorrow-theme'
+
+" Languages
+Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+
+" Other
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+call plug#end()
 
 "------------------------------------------------------------------------------
 " General.
@@ -56,8 +90,9 @@ let g:sh_no_error = 1
 " Use c syntax highlighting for .h files
 let g:c_syntax_for_h = 1
 
-" Color scheme
+" Color scheme - override background to be transparent.
 colorscheme Tomorrow-Night
+hi Normal ctermbg=none
 
 " Rainbow Parentheses
 let g:rainbow_active = 1
@@ -72,6 +107,12 @@ set cursorline
 " Set window title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
 set title
+
+"------------------------------------------------------------------------------
+" Airline configuration.
+"------------------------------------------------------------------------------
+let g:airline_powerling_fonts = 1
+set laststatus=2
 
 "------------------------------------------------------------------------------
 " Ctrl-P options:
@@ -117,22 +158,6 @@ let g:UltiSnipsListSnippets="<c-e>"
 " and close the selection list, same as other IDEs.
 " CONFLICT with some plugins like tpope/Endwise
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-"------------------------------------------------------------------------------
-" Powerline setup
-"------------------------------------------------------------------------------
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-" Always show status line
-set laststatus=2
-" fast update fix
-if ! has('gui_running')
-  set ttimeoutlen=10
-  augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=0
-    au InsertLeave * set timeoutlen=1000
-  augroup END
-endif
 
 "------------------------------------------------------------------------------
 " Python mode settings
