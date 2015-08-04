@@ -5,15 +5,20 @@ set nocompatible
 "------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
+" Personal
+let g:plug_url_format = 'git@github.com:%s.git'
+Plug 'DiscoViking/CtrlPGtags'
+Plug 'DiscoViking/AutoComment'
+Plug 'DiscoViking/rainbow'
+unlet g:plug_url_format
+
 " Navigation
 Plug 'kien/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'rking/ag.vim'
 Plug 'vim-scripts/gtags.vim'
-Plug 'DiscoViking/CtrlPGtags'
 
 " Editing
-Plug 'DiscoViking/AutoComment'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh', 'for': ['c', 'python'] }
 autocmd! User YouCompleteMe call youcompleteme#Enable()
@@ -111,7 +116,7 @@ set title
 "------------------------------------------------------------------------------
 " Airline configuration.
 "------------------------------------------------------------------------------
-let g:airline_powerling_fonts = 1
+let g:airline_powerline_fonts = 1
 set laststatus=2
 
 "------------------------------------------------------------------------------
