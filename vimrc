@@ -235,23 +235,6 @@ set nocompatible
 
 " }
 
-" Functions to right-align a line of text. {
-
-  function! Strip( text )
-    return substitute(a:text, '^\s*\(.\{-}\)\s*$', '\1', '')
-  endfunction
-
-  function! RightAlign()
-    let text = Strip(getline('.'))
-    let text = substitute(text, '^', repeat(' ', 79-len(text)), '')
-    exe 's/.*/' . text . '/'
-  endfunction
-
-  command! RightAlign :call RightAlign()
-  nmap <leader>l :RightAlign<CR>
-
-" }
-
 " Enable mouse control for idle scrolling. {
 
   " Selectively map only the mouse buttons we want.
@@ -272,23 +255,6 @@ set nocompatible
   map <3-RightMouse> <nop>
   map <RightDrag> <nop>
   map <RightRelease> <nop>
-
-" }
-
-" Open function definition in window to the right. {
-
-  function! RightDef()
-    let l:fname = expand("<cword>")
-    rightbelow vert new
-    try
-      exe "cs f g " . l:fname
-    catch
-      quit "If we failed to find the tag, close the window we just opened.
-      redraw "Force a redraw now so that the next echo won't get overwritten.
-      echom "Didn't find definition of " . l:fname
-    endtry
-  endfunction
-  nmap <silent> <C-\>r :call RightDef()<CR>
 
 " }
 
@@ -333,44 +299,6 @@ set nocompatible
 
   nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
   nmap <silent> <leader>pw :call DoWindowSwap()<CR>
-
-" }
-
-" Mouse scrolling. {
-
-  function! SetPos()
-    let g:oldline = winline()
-    let g:oldcol = wincol()
-  endfunction
-
-  function! ScrollWindow()
-    let l:newline = winline()
-    let l:newcol = wincol()
-    let l:linediff = l:newline - g:oldline
-    let l:coldiff = l:newcol - g:oldcol
-    let g:oldline = l:newline
-    let g:oldcol = l:newcol
-
-    if (l:linediff > 0)
-      exec "norm " . l:linediff . "\<C-Y>"
-      exec "norm " . l:linediff . "k"
-    else
-      if (l:linediff < 0)
-        exec "norm " . -l:linediff . "\<C-E>"
-        exec "norm " . -l:linediff . "j"
-      endif
-    endif
-
-    if (l:coldiff > 0)
-      exec "norm " . l:coldiff . "zh"
-      exec "norm " . l:coldiff . "h"
-    else
-      if (l:coldiff < 0)
-        exec "norm " . -l:coldiff . "zl"
-        exec "norm " . -l:coldiff . "l"
-      endif
-    endif
-  endfunction
 
 " }
 
