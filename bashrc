@@ -91,6 +91,25 @@ unpack()
 }
 
 #------------------------------------------------------------------------------
+# Functions to mark and easily goto marked directories by name.
+# ------------------------------------------------------------------------------
+MARKED_DIR_FILE=~/.marked_dirs
+touch $MARKED_DIR_FILE
+
+mark()
+{
+  sed -i "/^$1/d" $MARKED_DIR_FILE
+  echo $1 $PWD >> $MARKED_DIR_FILE
+}
+
+goto()
+{
+  local line=$(grep "^$1" $MARKED_DIR_FILE)
+  local dir=${line##* }
+  cd $dir
+}
+
+#------------------------------------------------------------------------------
 # Pretty Prompt
 #------------------------------------------------------------------------------
 sep() {
