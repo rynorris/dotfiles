@@ -224,7 +224,7 @@ set nocompatible
 
 " Auto-format go files on save. {
 
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
   if executable("xclip")
     " Put contents of unnamed register into clipboard.
