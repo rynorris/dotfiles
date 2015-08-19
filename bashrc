@@ -28,6 +28,9 @@ export PATH=$UTIL_ROOT:$GOPATH/bin:$PATH
 #------------------------------------------------------------------------------
 export PATH=$HOME/neovim/bin:$PATH
 
+#------------------------------------------------------------------------------
+# Aliases
+#------------------------------------------------------------------------------
 alias cdv='cd ~/.vim'
 
 alias evimrc='vim ~/.vimrc'
@@ -38,6 +41,13 @@ alias grep='grep -n --color'
 
 alias hist='eval $(history | sed "s/ *[0-9]* *//" | sort -u | fzf)'
 alias dbg='gdb -q -ex "python gdb.events.exited.connect(lambda x: gdb.execute(\"quit\"))" -ex run --args'
+
+#------------------------------------------------------------------------------
+# Bindings.
+#------------------------------------------------------------------------------
+
+# Alt-Enter triggers running currently entered command as root.
+bind '"\e\C-m"':"\"\C-asudo \C-m\""
 
 #------------------------------------------------------------------------------
 # Function for removing a host from the ssh known_hosts file.
