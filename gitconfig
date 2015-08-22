@@ -9,4 +9,4 @@
   st = status
   df = diff --color
   co = checkout
-  hist = log --graph --oneline --decorate
+  hist = log --graph --oneline --decorate --all
