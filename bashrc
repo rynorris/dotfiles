@@ -43,13 +43,6 @@ alias hist='eval $(history | sed "s/ *[0-9]* *//" | sort -u | fzf)'
 alias dbg='gdb -q -ex "python gdb.events.exited.connect(lambda x: gdb.execute(\"quit\"))" -ex run --args'
 
 #------------------------------------------------------------------------------
-# Bindings.
-#------------------------------------------------------------------------------
-
-# Alt-Enter triggers running currently entered command as root.
-bind '"\e\C-m"':"\"\C-asudo \C-m\""
-
-#------------------------------------------------------------------------------
 # Function for removing a host from the ssh known_hosts file.
 #------------------------------------------------------------------------------
 rhost() {
