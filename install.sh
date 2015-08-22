@@ -42,3 +42,4 @@ install() {
 # Actually install the dotfiles.
 install vimrc ~/.vimrc
 install bashrc ~/.bashrc
+install gitconfig ~/.gitconfig
