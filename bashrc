@@ -18,10 +18,20 @@ export MAKEFLAGS="-j 32"
 
 # User specific aliases and functions
 export UTIL_ROOT=$HOME/bin
-export GOPATH=$HOME/go
 export DIFFCMD=meld
 export EDITOR=vim
 export PATH=$UTIL_ROOT:$GOPATH/bin:$PATH
+
+#------------------------------------------------------------------------------
+# Go config.
+#------------------------------------------------------------------------------
+[[ -s "/home/ryan/.gvm/scripts/gvm" ]] && source "/home/ryan/.gvm/scripts/gvm"
+if [[ $(type -P gvm) ]]
+then
+  latest_go_version=$(gvm list | grep "go.*" | tail -n1)
+  gvm use $latest_go_version
+fi
+export GOPATH=$HOME/go
 
 #------------------------------------------------------------------------------
 # Neovim
