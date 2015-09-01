@@ -113,6 +113,7 @@ set nocompatible
 
   " Line numbers
   set relativenumber
+  set number
   set colorcolumn=80
 
   " Highlight the current line.
