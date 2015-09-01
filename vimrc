@@ -4,6 +4,25 @@ set nocompatible
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker:
 " }
 
+" Function for sourcing a file if it exists. {
+
+function! Source(file)
+  let l:filename = expand(a:file)
+  if filereadable(l:filename)
+    exec "silent source" . fnameescape(l:filename)
+  endif
+endfunction
+
+" }
+
+" Source other configuration files. {
+
+  " If there's a local vimrc on this system, load it.
+  " This is designed to allow for system-specific customization.
+  call Source("~/.vimrc_local")
+
+" }
+
 " Vim-Plug for plugin management. {
 
   call plug#begin('~/.vim/plugged')
@@ -46,6 +65,9 @@ set nocompatible
 
   " Other
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+  " System local plugins
+  call VimrcLocalPlugins()
 
   call plug#end()
 
@@ -306,21 +328,8 @@ set nocompatible
 
 " }
 
-" Function for sourcing a file if it exists. {
+" Source local override settings. {
 
-function! Source(file)
-  let l:filename = expand(a:file)
-  if filereadable(l:filename)
-    exec "silent source" . fnameescape(l:filename)
-  endif
-endfunction
-
-" }
-
-" Source other configuration files. {
-
-  " If there's a local vimrc on this system, load it.
-  " This is designed to allow for system-specific customization.
-  call Source("~/.vimrc_local")
+  call VimrcLocalEnd()
 
 " }
