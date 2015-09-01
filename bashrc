@@ -18,10 +18,20 @@ export MAKEFLAGS="-j 32"
 
 # User specific aliases and functions
 export UTIL_ROOT=$HOME/bin
-export GOPATH=$HOME/go
 export DIFFCMD=meld
 export EDITOR=vim
 export PATH=$UTIL_ROOT:$GOPATH/bin:$PATH
+
+#------------------------------------------------------------------------------
+# Go config.
+#------------------------------------------------------------------------------
+[[ -s "/home/ryan/.gvm/scripts/gvm" ]] && source "/home/ryan/.gvm/scripts/gvm"
+if [[ $(type -P gvm) ]]
+then
+  latest_go_version=$(gvm list | grep "go.*" | tail -n1)
+  gvm use $latest_go_version
+fi
+export GOPATH=$HOME/go
 
 #------------------------------------------------------------------------------
 # Neovim
@@ -41,13 +51,6 @@ alias grep='grep -n --color'
 
 alias hist='eval $(history | sed "s/ *[0-9]* *//" | sort -u | fzf)'
 alias dbg='gdb -q -ex "python gdb.events.exited.connect(lambda x: gdb.execute(\"quit\"))" -ex run --args'
-
-#------------------------------------------------------------------------------
-# Bindings.
-#------------------------------------------------------------------------------
-
-# Alt-Enter triggers running currently entered command as root.
-bind '"\e\C-m"':"\"\C-asudo \C-m\""
 
 #------------------------------------------------------------------------------
 # Function for removing a host from the ssh known_hosts file.
@@ -88,6 +91,25 @@ unpack()
   echo "Unpacking $archive --> $directory"
   mkdir -p "$directory"
   tar -xzf "$archive" -C "$directory" && rm $archive
+}
+
+#------------------------------------------------------------------------------
+# Functions to mark and easily goto marked directories by name.
+# ------------------------------------------------------------------------------
+MARKED_DIR_FILE=~/.marked_dirs
+touch $MARKED_DIR_FILE
+
+mark()
+{
+  sed -i "/^$1/d" $MARKED_DIR_FILE
+  echo $1 $PWD >> $MARKED_DIR_FILE
+}
+
+goto()
+{
+  local line=$(grep "^$1" $MARKED_DIR_FILE)
+  local dir=${line##* }
+  cd $dir
 }
 
 #------------------------------------------------------------------------------

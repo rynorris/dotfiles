@@ -1,0 +1,12 @@
+[user]
+  name = Ryan Norris
+  email = rynorris@gmail.com
+
+[push]
+  default = simple
+
+[alias]
+  st = status
+  df = diff --color
+  co = checkout
+  hist = log --graph --oneline --decorate --all
