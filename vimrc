@@ -206,6 +206,9 @@ set nocompatible
   nmap <C-\>n :cn<CR>
   nmap <C-\>p :cp<CR>
 
+  " Bind U to redo.  This mimics the behaviour of [nN] which is nice.
+  nnoremap U <C-r>
+
 " }
 
 " HARD MODE. {
