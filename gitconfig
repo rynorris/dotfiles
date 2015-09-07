@@ -10,3 +10,5 @@
   df = diff --color
   co = checkout
   hist = log --graph --oneline --decorate --all
+  bhist = show master..HEAD --name-status --pretty=format:'%C(Yellow)%h%C(reset) %C(bold)%s%C(reset) %C(auto)%d%C(reset)'
+  cl = diff master --name-only
