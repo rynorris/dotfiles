@@ -62,6 +62,7 @@ endfunction
   Plug 'klen/python-mode', { 'for': 'python' }
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   Plug 'fatih/vim-go', { 'for': 'go' }
+  Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
 
   " Other
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
