@@ -94,7 +94,7 @@ endfunction
   " Tagging settings.
   set csprg=gtags-cscope  "Use gtags-cscope instead of cscope for tagging.
   " Add GTAGS tag database so cscope will use it.
-  exe "silent! cs add " . expand("$CB_ROOT/GTAGS")
+  exe "silent! cs add " . expand("GTAGS")
   set csverb
   set cst                 "Makes cscope tags play nice with the tag stack.
 
