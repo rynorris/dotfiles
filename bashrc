@@ -168,6 +168,9 @@ fi
 if [[ -f ~/.fzf.bash ]]
 then
   . ~/.fzf.bash
+
+  # C-g to insert a modified file in a git repo.
+  bind '"\C-t": " \C-u \C-a\C-k$(git diff master --name-only | fzf)\e\C-e\C-y\C-a\C-y\ey\C-h\C-e\er"'
 fi
 
 # Use bash completion if available.
