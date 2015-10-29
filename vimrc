@@ -129,6 +129,7 @@ endfunction
   hi NonText ctermbg=none
   hi SignColumn ctermbg=none
   hi Folded ctermbg=none
+  hi DiffText ctermfg=Red
   let g:gitgutter_override_sign_column_highlight = 0
 
   " Rainbow Parentheses
@@ -166,6 +167,7 @@ endfunction
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_dotfiles = 0
   let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+  let g:ctrlp_by_filename = 1
 
   " Use the cmatcher to perform matching. Much faster!
   " Necessary to use CtrlPGtags.
@@ -297,7 +299,7 @@ endfunction
   autocmd FileType c,cpp,java,php,ruby,python,go,make,vim,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
   " Also highlight trailing whitespace so we can spot it in other filetypes.
-  match Todo /\s\+$/
+  autocmd FileType c,cpp,java,php,ruby,python,go,make,vim,sh match Todo /\s\+$/
   hi Todo ctermbg=1 ctermfg=7
 
 " }
