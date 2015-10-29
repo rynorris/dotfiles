@@ -20,7 +20,7 @@ export MAKEFLAGS="-j 32"
 export UTIL_ROOT=$HOME/bin
 export DIFFCMD=meld
 export EDITOR=vim
-export PATH=$UTIL_ROOT:$GOPATH/bin:$PATH
+export PATH=$UTIL_ROOT:$PATH
 
 #------------------------------------------------------------------------------
 # Go config.
@@ -32,6 +32,7 @@ then
   gvm use $latest_go_version
 fi
 export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
 
 #------------------------------------------------------------------------------
 # Neovim
