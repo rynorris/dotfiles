@@ -196,13 +196,16 @@ endfunction
     return ""
   endfunction
 
-  au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-  let g:UltiSnipsJumpForwardTrigger="<tab>"
-  let g:UltiSnipsListSnippets="<c-e>"
-  " this mapping Enter key to <C-y> to chose the current highlight item
-  " and close the selection list, same as other IDEs.
-  " CONFLICT with some plugins like tpope/Endwise
-  inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  " Only bother if UltiSnips is setup.
+  if exists("g:UltiSnipsExpandTrigger")
+    au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsListSnippets="<c-e>"
+    " this mapping Enter key to <C-y> to chose the current highlight item
+    " and close the selection list, same as other IDEs.
+    " CONFLICT with some plugins like tpope/Endwise
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  endif
 
 " }
 
