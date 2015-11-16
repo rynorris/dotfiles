@@ -1,7 +1,19 @@
 ###############################################################################
 # Installs these dotfiles on a system.
 ###############################################################################
-DOTFILE_DIR=$(dirname $(readlink -f ${BASH_SOURCE}))
+
+# Readlink command is different on OSX.  (needs coreutils installed)
+platform=$(uname)
+if [[ $platform == Darwin ]]
+then
+  echo "System is running OSX (Darwin).  Using greadlink to resolve filenames."
+  READLINK=greadlink
+else
+  echo "System is running $platform.  Using greadlink to resolve filenames."
+  READLINK=readlink
+fi
+
+DOTFILE_DIR=$(dirname $($READLINK -f ${BASH_SOURCE}))
 
 ###############################################################################
 # Installs a dotfile.
