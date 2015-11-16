@@ -137,7 +137,11 @@ endfunction
 
   " Line numbers
   set relativenumber
-  set number
+
+  " If Vim > 7.4 enable hybrid line numbering mode.
+  if v:version >= 704
+    set number
+  endif
   set colorcolumn=80
 
   " Highlight the current line.
