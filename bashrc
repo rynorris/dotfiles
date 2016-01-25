@@ -2,6 +2,9 @@
 # Global .bashrc.
 #------------------------------------------------------------------------------
 
+# Find out our OS so we can use it later if necessary.
+OS=$(uname)
+
 # .bashrc
 export TERM=xterm-256color
 ssh-add &>/dev/null
@@ -175,9 +178,16 @@ then
 fi
 
 # Use bash completion if available.
-if [[ -f /etc/bash_completion ]]
+if [[ $OS = Darwin ]]
 then
-  . /etc/bash_completion
+  BASH_COMPLETION_FILE=$(brew --prefix)/etc/bash_completion
+else
+  BASH_COMPLETION_FILE=/etc/bash_completion
+fi
+
+if [[ -f $BASH_COMPLETION_FILE ]]
+then
+  . $BASH_COMPLETION_FILE
 fi
 
 # Source machine-local definitions if available.
