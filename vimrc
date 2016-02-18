@@ -164,14 +164,13 @@ endfunction
 
 " Ctrl-P options. {
 
-  set wildignore+=*.tmp,*.swp,*.so,*.zip,*.o,*.d
+  set wildignore+=*.tmp,*.swp,*.so,*.zip,*.o,*.d,*.pyc
   let g:ctrlp_max_files = 910000
   let g:ctrlp_use_caching = 1
   let g:ctrlp_switch_buffer = 'T'
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_dotfiles = 0
   let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-  let g:ctrlp_by_filename = 1
 
   " Use the cmatcher to perform matching. Much faster!
   " Necessary to use CtrlPGtags.
