@@ -14,3 +14,9 @@
   cl = diff master --name-only
   fad = !git diff --name-only | fzf --multi | xargs git add
   untracked = ls-files --others --exclude-standard
+[branch]
+	autosetuprebase = always
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
