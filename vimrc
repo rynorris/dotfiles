@@ -63,6 +63,7 @@ endfunction
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
+  Plug 'leafgarland/typescript-vim'
 
   " Other
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
