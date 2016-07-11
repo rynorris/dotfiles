@@ -23,7 +23,7 @@ export MAKEFLAGS="-j 32"
 export UTIL_ROOT=$HOME/bin
 export DIFFCMD=meld
 export EDITOR=vim
-export PATH=$UTIL_ROOT:$PATH
+export PATH=$UTIL_ROOT:$PATH:/usr/local/bin
 
 #------------------------------------------------------------------------------
 # Go config.
