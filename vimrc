@@ -165,7 +165,7 @@ endfunction
 
 " Ctrl-P options. {
 
-  set wildignore+=*.tmp,*.swp,*.so,*.zip,*.o,*.d,*.pyc
+  set wildignore+=*.tmp,*.swp,*.so,*.zip,*.o,*.d,*.pyc,*.class,node_modules
   let g:ctrlp_max_files = 910000
   let g:ctrlp_use_caching = 1
   let g:ctrlp_switch_buffer = 'T'
@@ -224,6 +224,8 @@ endfunction
 
   let g:syntastic_python_checkers=['python']
   let g:syntastic_c_checkers=[]
+  let g:syntastic_typescript_checkers=['tsc', 'tslint']
+  let g:syntastic_typescript_tsc_fname = ''
 
 " }
 
