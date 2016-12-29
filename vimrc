@@ -46,7 +46,12 @@ endfunction
   autocmd! User YouCompleteMe call youcompleteme#Enable()
 
   " Informational
-  Plug 'scrooloose/syntastic'
+  " Use ale for asynchronous linting if we have Vim 8.
+  if v:version >= 800
+    Plug 'w0rp/ale'
+  else
+    Plug 'scrooloose/syntastic'
+  endif
   Plug 'majutsushi/tagbar'
 
   " Source control
@@ -226,6 +231,12 @@ endfunction
   let g:syntastic_c_checkers=[]
   let g:syntastic_typescript_checkers=['tsc', 'tslint']
   let g:syntastic_typescript_tsc_fname = ''
+
+" }
+
+" ALE settings. {
+
+  let g:ale_echo_msg_format = '[%linter%] %s'
 
 " }
 
