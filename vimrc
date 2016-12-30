@@ -30,7 +30,7 @@ endfunction
   " Personal
   let g:plug_url_format = 'git@github.com:%s.git'
   Plug 'DiscoViking/CtrlPGtags'
-  Plug 'DiscoViking/AutoComment'
+  " Plug 'DiscoViking/AutoComment'
   Plug 'DiscoViking/rainbow'
   unlet g:plug_url_format
 
@@ -42,16 +42,15 @@ endfunction
 
   " Editing
   Plug 'SirVer/ultisnips'
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.sh', 'for': ['c', 'python'] }
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.sh', 'for': ['c'] }
   autocmd! User YouCompleteMe call youcompleteme#Enable()
 
   " Informational
   " Use ale for asynchronous linting if we have Vim 8.
   if v:version >= 800
-    Plug 'w0rp/ale'
-  else
-    Plug 'scrooloose/syntastic'
+    Plug 'w0rp/ale', { 'for': ['python','c','typescript','javascript','java'] }
   endif
+  Plug 'scrooloose/syntastic', { 'for': ['go'] }
   Plug 'majutsushi/tagbar'
 
   " Source control
@@ -273,7 +272,7 @@ endfunction
 
 " Auto-format go files on save. {
 
-  autocmd FileType go autocmd BufWritePre <buffer> GoFmt
+  let g:go_fmt_command = "goimports"
 
   if executable("xclip")
     " Put contents of unnamed register into clipboard.
@@ -316,10 +315,10 @@ endfunction
       call cursor(l, c)
   endfun
 
-  autocmd FileType c,cpp,java,php,ruby,python,go,make,vim,sh autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+  autocmd FileType c,cpp,java,php,ruby,python,make,vim,sh,typescript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
   " Also highlight trailing whitespace so we can spot it in other filetypes.
-  autocmd FileType c,cpp,java,php,ruby,python,go,make,vim,sh match Todo /\s\+$/
+  autocmd FileType c,cpp,java,php,ruby,python,go,make,vim,sh,typescript match Todo /\s\+$/
   hi Todo ctermbg=1 ctermfg=7
 
 " }
