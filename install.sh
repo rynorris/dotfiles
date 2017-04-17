@@ -1,15 +1,25 @@
+set -e
+
 ###############################################################################
 # Installs these dotfiles on a system.
 ###############################################################################
-
-# Readlink command is different on OSX.  (needs coreutils installed)
 platform=$(uname)
+
+# Install dependencies
+case $platform
+  Darwin)
+    echo "Installing dependencies for MacOS (Darwin)"
+    ./darwin.sh
+    ;;
+esac
+
+# Readlink command is different on MacOS.  (needs coreutils installed)
 if [[ $platform == Darwin ]]
 then
-  echo "System is running OSX (Darwin).  Using greadlink to resolve filenames."
+  echo "System is running MacOS (Darwin).  Using greadlink to resolve filenames."
   READLINK=greadlink
 else
-  echo "System is running $platform.  Using greadlink to resolve filenames."
+  echo "System is running $platform.  Using readlink to resolve filenames."
   READLINK=readlink
 fi
 
@@ -65,3 +75,6 @@ install vimrc ~/.vimrc
 install vimrc_local ~/.vimrc_local noclobber
 install bashrc ~/.bashrc
 install gitconfig ~/.gitconfig
+
+# Vim setup.
+./vim.sh
