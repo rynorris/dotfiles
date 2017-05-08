@@ -58,7 +58,8 @@ endfunction
   Plug 'tpope/vim-fugitive'
 
   " Visual
-  Plug 'bling/vim-airline'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'chriskempson/vim-tomorrow-theme'
   Plug 'sjl/badwolf'
 
