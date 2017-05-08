@@ -6,7 +6,7 @@ set -e
 platform=$(uname)
 
 # Install dependencies
-case $platform
+case $platform in
   Darwin)
     echo "Installing dependencies for MacOS (Darwin)"
     ./darwin.sh
