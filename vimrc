@@ -30,7 +30,6 @@ endfunction
   " Personal
   let g:plug_url_format = 'git@github.com:%s.git'
   Plug 'DiscoViking/CtrlPGtags'
-  " Plug 'DiscoViking/AutoComment'
   Plug 'DiscoViking/rainbow'
   unlet g:plug_url_format
 
@@ -41,7 +40,6 @@ endfunction
   Plug 'vim-scripts/gtags.vim'
 
   " Editing
-  Plug 'SirVer/ultisnips'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.sh', 'for': ['c'] }
   autocmd! User YouCompleteMe call youcompleteme#Enable()
 
