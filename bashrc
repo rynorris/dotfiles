@@ -190,6 +190,12 @@ then
   . $BASH_COMPLETION_FILE
 fi
 
+# On MacOS, JAVA_HOME is not automatically set correctly.  Do this here.
+if [[ $OS = Darwin ]]
+then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
+
 # Source machine-local definitions if available.
 if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
