@@ -45,10 +45,12 @@ endfunction
 
   " Informational
   " Use ale for asynchronous linting if we have Vim 8.
+  " Otherwise syntastic
   if v:version >= 800
-    Plug 'w0rp/ale', { 'for': ['python','c','typescript','javascript','java'] }
+    Plug 'w0rp/ale'
+  else
+    Plug 'scrooloose/syntastic'
   endif
-  Plug 'scrooloose/syntastic', { 'for': ['go'] }
   Plug 'majutsushi/tagbar'
 
   " Source control
