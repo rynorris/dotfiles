@@ -145,13 +145,10 @@ export PS1='$(parse_git_branch)'
 
 # Get a random color which is good on a dark background.
 get_rand_color() {
-  num='0'
-  invalid_nums='0 4 16 17 18 19 20 21 22 25 52 53 54 55 56 57 91 92 232 233 234 235 236 237 238 239 240'
-  while [[ $invalid_nums =~ $num ]]
-  do
-    num=$((RANDOM%255+1))
-  done
-  echo $num
+  declare -a valid_colors=($(seq 46 51) $(seq 82 87) $(seq 118 123) $(seq 154 159) $(seq 190 195) $(seq 226 231))
+  local num_colors=${#valid_colors[@]}
+  local choice_index=$((RANDOM % num_colors))
+  echo ${valid_colors[choice_index]}
 }
 
 set_rand_color() {
