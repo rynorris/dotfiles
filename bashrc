@@ -145,7 +145,7 @@ export PS1='$(parse_git_branch)'
 
 # Get a random color which is good on a dark background.
 get_rand_color() {
-  declare -a valid_colors=($(seq 46 51) $(seq 82 87) $(seq 118 123) $(seq 154 159) $(seq 190 195) $(seq 226 231))
+  declare -a valid_colors=($(seq 13 15) $(seq 46 51) $(seq 82 87) $(seq 118 123) $(seq 154 159) $(seq 190 195) $(seq 226 231))
   local num_colors=${#valid_colors[@]}
   local choice_index=$((RANDOM % num_colors))
   echo ${valid_colors[choice_index]}

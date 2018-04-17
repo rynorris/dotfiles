@@ -1,6 +1,6 @@
 [user]
   name = Ryan Norris
-  email = rynorris@gmail.com
+	email = rnorris@palantir.com
 
 [push]
   default = simple
