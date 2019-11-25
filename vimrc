@@ -64,11 +64,11 @@ endfunction
   Plug 'sjl/badwolf'
 
   " Languages
-  Plug 'klen/python-mode', { 'for': 'python' }
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
-  Plug 'leafgarland/typescript-vim'
+  Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+  Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
 
   " Other
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -83,8 +83,9 @@ endfunction
 " General. {
 
   " Tab settings.
-  set softtabstop=2
-  set shiftwidth=2
+  set tabstop=8
+  set softtabstop=4
+  set shiftwidth=4
   set expandtab
   filetype plugin indent on
 
@@ -113,6 +114,8 @@ endfunction
   command! WQ wq
   command! Wq wq
 
+  " Intentation for yaml.
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " }
 
 " Visual. {
@@ -170,7 +173,7 @@ endfunction
 
 " Ctrl-P options. {
 
-  set wildignore+=*.tmp,*.swp,*.so,*.zip,*.o,*.d,*.pyc,*.class,node_modules
+  set wildignore+=*.tmp,*.swp,*.so,*.zip,*.o,*.d,*.pyc,*.class,node_modules,build,dist
   let g:ctrlp_max_files = 910000
   let g:ctrlp_use_caching = 1
   let g:ctrlp_switch_buffer = 'T'
@@ -180,7 +183,7 @@ endfunction
 
   " Use the cmatcher to perform matching. Much faster!
   " Necessary to use CtrlPGtags.
-  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " }
 
@@ -237,6 +240,9 @@ endfunction
 " ALE settings. {
 
   let g:ale_echo_msg_format = '[%linter%] %s'
+
+  " Enable linting for Rust tests.
+  let g:ale_rust_cargo_check_all_targets = 1
 
 " }
 
