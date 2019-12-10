@@ -16,6 +16,9 @@ fi
 
 shopt -s checkwinsize
 
+# Support unicode by default.
+export LANG=en_US.UTF-8
+
 # Build config.
 export MAKEFLAGS="-j 32"
 

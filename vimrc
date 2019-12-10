@@ -109,9 +109,6 @@ endfunction
   " Make backspace behave as expected.
   set backspace=indent,eol,start
 
-  " Display unicode characters by default.
-  set encoding=utf-8
-
   " Map W and Q to w and q so no more accidental failure to save/quit nonsense.
   command! W w
   command! Q q
