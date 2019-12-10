@@ -69,6 +69,7 @@ endfunction
   Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript'] }
   Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
   Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
+  Plug 'elmcast/elm-vim'
 
   " Other
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -288,6 +289,10 @@ endfunction
     command! Clop put = system('xclip -o -selection clipboard')
   endif
 
+" }
+
+" Auto-format ELM files on save. {
+  let g:elm_format_autosave = 1
 " }
 
 " Enable mouse control for idle scrolling. {
