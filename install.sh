@@ -5,11 +5,27 @@ set -e
 ###############################################################################
 platform=$(uname)
 
+# Find out which shell we are running.
+if [ -n "$ZSH_VERSION" ]; then
+  # assume Zsh
+  SHELL=zsh
+else
+  # assume bash
+  SHELL=bash
+fi
+
 # Install dependencies
 case $platform in
   Darwin)
     echo "Installing dependencies for MacOS (Darwin)"
     ./darwin.sh
+    ;;
+esac
+
+case $shell in
+  zsh)
+    echo "Installing dependencies for zsh"
+    ./zsh.sh
     ;;
 esac
 
@@ -73,7 +89,9 @@ install() {
 # Actually install the dotfiles.
 install vimrc ~/.vimrc
 install vimrc_local ~/.vimrc_local noclobber
+install common.sh ~/.common.sh
 install bashrc ~/.bashrc
+install zshrc ~/.zshrc
 install gitconfig ~/.gitconfig
 
 # Vim setup.
