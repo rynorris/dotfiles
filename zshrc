@@ -102,3 +102,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.common.sh
+
+# Source machine-local definitions if available.
+if [ -f ~/.bashrc_local ]; then
+  . ~/.bashrc_local
+fi
