@@ -39,10 +39,6 @@ endfunction
   Plug 'rking/ag.vim'
   Plug 'vim-scripts/gtags.vim'
 
-  " Editing
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.sh', 'for': ['c'] }
-  autocmd! User YouCompleteMe call youcompleteme#Enable()
-
   " Informational
   " Use ale for asynchronous linting if we have Vim 8.
   " Otherwise syntastic
