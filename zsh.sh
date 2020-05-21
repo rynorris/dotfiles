@@ -11,8 +11,8 @@ exists() {
         return 0
     fi
 
-    # Then check if it's a file.
-    if [[ -f $1 ]]
+    # Then check if it's in the filesystem.
+    if [[ -e $1 ]]
     then
         echo "$1 exists in filesystem"
         return 0
@@ -36,3 +36,6 @@ ensure() {
 }
 
 ensure "Oh-my-zsh" "$ZSH/oh-my-zsh.sh" sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+source $ZSH/oh-my-zsh.sh
+
+ensure "zsh-z" "$ZSH_CUSTOM/plugins/zsh-z" git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
