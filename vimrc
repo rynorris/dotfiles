@@ -27,12 +27,6 @@ endfunction
 
   call plug#begin('~/.vim/plugged')
 
-  " Personal
-  let g:plug_url_format = 'git@github.com:%s.git'
-  Plug 'DiscoViking/CtrlPGtags'
-  Plug 'DiscoViking/rainbow'
-  unlet g:plug_url_format
-
   " Navigation
   Plug 'kien/ctrlp.vim'
   Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }

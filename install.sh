@@ -20,6 +20,10 @@ case $platform in
     echo "Installing dependencies for MacOS (Darwin)"
     ./darwin.sh
     ;;
+  Linux)
+    echo "Installing dependencies for Linux"
+    ./linux.sh
+    ;;
 esac
 
 case $shell in
@@ -39,7 +43,7 @@ else
   READLINK=readlink
 fi
 
-DOTFILE_DIR=$(dirname $($READLINK -f ${BASH_SOURCE}))
+DOTFILE_DIR=$(dirname $($READLINK -f $0))
 
 ###############################################################################
 # Installs a dotfile.
