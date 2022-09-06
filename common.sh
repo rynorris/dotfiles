@@ -4,7 +4,6 @@
 
 # Find out our OS so we can use it later if necessary.
 OS=$(uname)
-echo "Current OS: $OS"
 
 # Build config.
 export MAKEFLAGS="-j 32"
