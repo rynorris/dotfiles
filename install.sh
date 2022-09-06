@@ -97,6 +97,7 @@ install common.sh ~/.common.sh
 install bashrc ~/.bashrc
 install zshrc ~/.zshrc
 install gitconfig ~/.gitconfig
+install p10k.zsh ~/.p10k.zsh
 
 # Vim setup.
 ./vim.sh
