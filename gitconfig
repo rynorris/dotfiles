@@ -1,26 +1,35 @@
 [user]
-  name = Ryan Norris
-	email = rnorris@palantir.com
+    name = Ryan Norris
+    email = rynorris@gmail.com
+    signingkey = 23650C15526C549E
 
 [push]
-  default = simple
+    default = simple
 
 [alias]
-  st = status
-  df = diff --color
-  co = checkout
-  hist = log --graph --oneline --decorate --all
-  bhist = show master..HEAD --name-status --pretty=format:'%C(Yellow)%h%C(reset) %C(bold)%s%C(reset) %C(auto)%d%C(reset)'
-  cl = diff master --name-only
-  fad = !git diff --name-only | fzf --multi | xargs git add
-  untracked = ls-files --others --exclude-standard
+    st = status
+    df = diff --color
+    co = checkout
+    hist = log --graph --oneline --decorate --all
+    bhist = show master..HEAD --name-status --pretty=format:'%C(Yellow)%h%C(reset) %C(bold)%s%C(reset) %C(auto)%d%C(reset)'
+    cl = diff master --name-only
+    fad = !git diff --name-only | fzf --multi | xargs git add
+    untracked = ls-files --others --exclude-standard
+    recent = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) - %(objectname:short) - %(refname:short)'
+
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    required = true
+    process = git-lfs filter-process
 [core]
-	excludesfile = /Users/rnorris/.gitignore
-	pager = less -F -X
+    excludesfile = /Users/rnorris/.gitignore
+    pager = less -F -X
+    fsmonitor = true
+    untrackedcache = true
+
+[includeif "gitdir:/Volumes/git/palantir/"]
+    path = "~/.palantir.gitconfig"
